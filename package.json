@@ -1,0 +1,43 @@
+{
+  "name": "timtwiest.nl",
+  "author": "Tim Twiest",
+  "description": "Personal Website, with Astro and Svelte.",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "astro": "astro",
+    "format": "prettier --write \"{.prettierrc,**/*.{ts,tsx,md,css,json,}}\"",
+    "lint:css": "stylelint \"src/**/*.{astro,css,scss,svelte}\""
+  },
+  "devDependencies": {
+    "@astrojs/markdown-remark": "^1.0.0",
+    "@astrojs/svelte": "^1.0.0",
+    "@astrojs/rss": "^1.0.0",
+    "@astrojs/sitemap": "^1.0.0",
+    "astro": "^1.0.8",
+    "astro-compress": "^1.0.2",
+    "postcss": "^8.4.16",
+    "postcss-html": "^1.5.0",
+    "prettier-plugin-astro": "^0.5.0",
+    "stylelint": "^14.10.0",
+    "stylelint-config-recommended": "^9.0.0",
+    "prettier": "^2.7.1",
+    "date-fns": "^2.29.2",
+    "reading-time": "^1.5.0",
+    "sass": "^1.54.4",
+    "svelte": "^3.48.0",
+    "typescript": "^4.7.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/timtwiest/timtwiest.nl/"
+  },
+  "bugs": {
+    "url": "https://github.com/timtwiest/timtwiest.nl/issues"
+  }
+}

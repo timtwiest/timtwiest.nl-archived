@@ -1,0 +1,34 @@
+---
+import DefaultLayout from '@layouts/DefaultLayout.astro';
+import Content from '@components/Content.svelte';
+import Social from '@components/Social.svelte';
+import Posts from '@components/Posts.svelte';
+import Post from '@components/Post.svelte';
+import { PostFrontMatter } from '@interfaces/Post';
+
+const posts = await Astro.glob<PostFrontMatter>('./posts/*.md');
+---
+
+<DefaultLayout>
+  <Content>
+    <h1 class="head-md">Hi, I'm Tim Twiest,</h1>
+    <p class="body-md">
+      an Senior Full-stack Developer with a passion for crafting highly scalable
+      applications, currently crafting products for the <a
+        href="https://www.belastingdienst.nl/"
+        target="_blank"
+        >Belastingdienst
+      </a>. I like to try new technologies and write and teach about my learnings.
+    </p>
+    <Social />
+    <Posts>
+      {
+        posts.map(({ frontmatter, url }) => (
+          <li>
+            <Post {url} {...frontmatter} />
+          </li>
+        ))
+      }
+    </Posts>
+  </Content>
+</DefaultLayout>

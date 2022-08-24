@@ -1,0 +1,47 @@
+---
+import DefaultLayout from '@layouts/DefaultLayout.astro';
+import Content from '@components/Content.svelte';
+
+import calcReadingTime from 'reading-time';
+import { format, parse } from 'date-fns';
+
+const { title, publishedAt } = Astro.props.content;
+const publishDate = format(parse(publishedAt, 'yyyy-MM-dd', new Date()), 'MMMM d, yyyy');
+const { text: readingTime } = calcReadingTime(Astro.props.rawContent());
+---
+
+<DefaultLayout>
+  <Content>
+    <h1 class="head-md">{title}</h1>
+    <div class="info">
+      <p class="body-sm">Tim Twiest at {publishDate}</p>
+      <p class="body-sm">{readingTime}</p>
+    </div>
+    <div class="post">
+      <div class="text body-md">
+        <slot />
+      </div>
+    </div>
+  </Content>
+</DefaultLayout>
+
+<style>
+  .info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #767070;
+    margin-bottom: 2rem;
+  }
+
+  .post {
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .text {
+    max-width: 860px;
+  }
+</style>

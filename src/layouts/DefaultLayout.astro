@@ -1,0 +1,49 @@
+---
+import '@/styles/styles.scss';
+import Nav from '@components/Nav.svelte';
+import Footer from '@components/Footer.svelte';
+
+export type Props = {
+  description?: string;
+  type?: string;
+  title?: string;
+  canonical?: string;
+};
+
+const {
+  title = 'Tim Twiest',
+  description = "Hi, I'm Tim Twiest.",
+  type = 'website',
+  canonical,
+} = Astro.props as Props;
+
+const url = Astro.url.toString();
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <meta property="og:url" content={url} />
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={title} />
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/12063110"
+    />
+    <meta property="og:site_name" content={title} />
+    <meta property="og:description" content={description} />
+
+    <meta name="description" content={description} />
+    <meta name="author" content={title} />
+    <link href={canonical} rel="canonical" />
+
+    <title>{title}</title>
+  </head>
+  <body>
+    <Nav />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
